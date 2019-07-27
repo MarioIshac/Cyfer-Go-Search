@@ -1,4 +1,4 @@
-package org.seifer.gosearch;
+package org.cyfer.gosearch;
 
 import lombok.val;
 import okhttp3.*;
