@@ -1,0 +1,6 @@
+{
+  "query": {
+    "statement": "SELECT * FROM image",
+    "skipCount": 0
+  }
+}

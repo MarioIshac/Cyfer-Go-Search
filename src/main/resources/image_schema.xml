@@ -1,0 +1,49 @@
+<schema xmlns="http://optimal-systems.org/ns/dmscloud/schema/v4.0/"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://optimal-systems.org/ns/dmscloud/schema/v4.0/ dmsCloud-schema.xsd">
+    <propertyStringDefinition>
+        <id>description</id>
+        <propertyType>string</propertyType>
+        <cardinality>single</cardinality>
+        <required>true</required>
+    </propertyStringDefinition>
+
+    <propertyDateTimeDefinition>
+        <id>weight</id>
+        <propertyType>number</propertyType>
+        <cardinality>single</cardinality>
+        <required>true</required>
+    </propertyDateTimeDefinition>
+
+    <propertyStringDefinition>
+        <id>location</id>
+        <propertyType>string</propertyType>
+        <cardinality>single</cardinality>
+        <required>true</required>
+    </propertyStringDefinition>
+
+    <propertyDateTimeDefinition>
+        <id>username</id>
+        <propertyType>string</propertyType>
+        <cardinality>single</cardinality>
+        <required>true</required>
+    </propertyDateTimeDefinition>
+
+    <propertyDateTimeDefinition>
+        <id>timestamp</id>
+        <propertyType>datetime</propertyType>
+        <cardinality>single</cardinality>
+        <required>true</required>
+    </propertyDateTimeDefinition>
+
+    <typeDocumentDefinition>
+        <id>image</id>
+        <baseId>enaio:document</baseId>
+        <propertyReference>description</propertyReference>
+        <propertyReference>weight</propertyReference>
+        <propertyReference>location</propertyReference>
+        <propertyReference>user</propertyReference>
+        <propertyReference>timestamp</propertyReference>
+        <contentStreamAllowed>notallowed</contentStreamAllowed>
+    </typeDocumentDefinition>
+</schema>

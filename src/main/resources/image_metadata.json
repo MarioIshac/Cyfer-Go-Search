@@ -1,0 +1,23 @@
+{
+  "objects": [
+    {
+      "properties": {
+        "description": {
+          "value": ${description}
+        },
+        "weight": {
+          "value": ${weight}
+        },
+        "location": {
+          "value": ${location}
+        },
+        "user": {
+          "value": ${user}
+        },
+        "timestamp": {
+          "value": ${timestamp}
+        }
+      }
+    }
+  ]
+}
