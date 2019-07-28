@@ -23,7 +23,7 @@
     </propertyStringDefinition>
 
     <propertyStringDefinition>
-        <id>username</id>
+        <id>user</id>
         <propertyType>string</propertyType>
         <cardinality>single</cardinality>
         <required>true</required>
@@ -49,7 +49,7 @@
         <propertyReference>description</propertyReference>
         <propertyReference>weight</propertyReference>
         <propertyReference>location</propertyReference>
-        <propertyReference>username</propertyReference>
+        <propertyReference>user</propertyReference>
         <propertyReference>timestamp</propertyReference>
         <propertyReference>image</propertyReference>
         <contentStreamAllowed>notallowed</contentStreamAllowed>
