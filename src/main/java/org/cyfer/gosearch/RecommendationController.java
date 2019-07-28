@@ -32,7 +32,7 @@ public class RecommendationController {
             val headers = Headers.of(headerMap);
 
             val pythonRecommenderCode = getClass().getClassLoader().getResourceAsStream("gosearch.py").readAllBytes();
-            val pythonRecommenderInstallPath = Path.of("~/gosearch.py");
+            val pythonRecommenderInstallPath = Paths.get("/gosearch.py");
 
             if (!Files.exists(pythonRecommenderInstallPath)) {
                 Files.createFile(pythonRecommenderInstallPath);
@@ -49,16 +49,16 @@ public class RecommendationController {
             val response = getHttpClient().newCall(request).execute();
             val csvBytes = response.body().bytes();
 
-            val recommenderInputPath = Path.of("~/input.csv");
-            val queryPath = Path.of("~/query.txt");
+            val recommenderInputPath = Path.of("/input.csv");
+            val queryPath = Path.of("/query.txt");
 
             Files.write(recommenderInputPath, csvBytes);
             Files.write(queryPath, String.format("%s\n%s", query, limit).getBytes());
 
-            Runtime.getRuntime().exec("python3 ~/gosearch.py");
+            Runtime.getRuntime().exec("python3 /gosearch.py");
 
             // val graph = Paths.get("~/graph.png");
-            val locations = Paths.get("~/locations.txt");
+            val locations = Paths.get("/locations.txt");
             // val users = Paths.get("~/users.txt");
 
             val locationsStr = Files.readString(locations);
