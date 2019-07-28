@@ -109,6 +109,9 @@ public class DataController {
     private Response uploadOriginalVersion(final List<ImageForm> equalImageForms) throws IOException {
         val versionedImage = equalImageForms.get(0);
         val imageMetaData = toJSON(versionedImage);
+
+        System.out.println("Meta Data " + imageMetaData);
+
         val requestImage = RequestBody.create(imageMetaData.getBytes(), JSON);
         val requestBody = new MultipartBody.Builder().setType(MultipartBody.FORM).addFormDataPart("data", "image_metadata.json", requestImage).build();
         val request = new Request.Builder().headers(headers).url("https://api.yuuvis.io/dms/objects").post(requestBody).build();
