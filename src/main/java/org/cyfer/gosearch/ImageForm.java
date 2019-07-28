@@ -63,11 +63,17 @@ public class ImageForm {
     public static Stream<ImageForm> getImageForms(final String csvData) {
         return Arrays.stream(csvData.split("\n"))
                      .skip(1) // Skip the headers
+                     .peek(row -> System.out.println("CSV Row " + row))
                      .map(csvEntry -> csvEntry.split(","))
+                     .peek(csvEntry -> System.out.println("CSV Entry " + Arrays.toString(csvEntry)))
                      .map(ImageForm::fromCSVEntryColumns);
     }
 
     private static ImageForm fromCSVEntryColumns(String[] csvEntryColumns) {
+        if (csvEntryColumns.length != 5) {
+            throw new IllegalArgumentException("`csvEntryColumns` must be length 5, received " + csvEntryColumns);
+        }
+
         val description = csvEntryColumns[DESCRIPTION_COLUMN];
 
         val weightString = csvEntryColumns[WEIGHT_COLUMN];
