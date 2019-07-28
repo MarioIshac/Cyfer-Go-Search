@@ -71,12 +71,12 @@ public class ImageForm {
 
     private static ImageForm fromCSVEntryColumns(String[] csvEntryColumns) {
         if (csvEntryColumns.length != 5) {
-            throw new IllegalArgumentException("`csvEntryColumns` must be length 5, received " + csvEntryColumns);
+            throw new IllegalArgumentException("`csvEntryColumns` must be length 5, received " + Arrays.toString(csvEntryColumns));
         }
 
         val description = csvEntryColumns[DESCRIPTION_COLUMN];
 
-        val weightString = csvEntryColumns[WEIGHT_COLUMN];
+        val weightString = csvEntryColumns[WEIGHT_COLUMN].replace("\"", "");
         System.out.println("Weight String: " + weightString);
         val weight = Double.parseDouble(weightString);
 
