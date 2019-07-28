@@ -30,6 +30,15 @@ public class RecommendationController {
             val headerMap = Map.of("Ocp-Apim-Subscription-Key", "b019ec95392146ec885cc9be94e2d8f9");
             val headers = Headers.of(headerMap);
 
+            val pythonRecommenderCode = getClass().getClassLoader().getResourceAsStream("gosearch.py").readAllBytes();
+            val pythonRecommenderInstallPath = Path.of("~/gosearch.py");
+
+            if (!Files.exists(pythonRecommenderInstallPath)) {
+                Files.createFile(pythonRecommenderInstallPath);
+            }
+
+            Files.write(pythonRecommenderInstallPath, pythonRecommenderCode);
+
             val request = new Request.Builder()
                                      .headers(headers)
                                      .url("https://cyfer-go-search.herokuapp.com/data/download")
@@ -45,7 +54,7 @@ public class RecommendationController {
             Files.write(recommenderInputPath, csvBytes);
             Files.write(queryPath, String.format("%s\n%s", query, limit).getBytes());
 
-            val process = Runtime.getRuntime().exec("python3 ~/gosearch.py");
+            Runtime.getRuntime().exec("python3 ~/gosearch.py");
 
             // val graph = Paths.get("~/graph.png");
             val locations = Paths.get("~/locations.txt");
