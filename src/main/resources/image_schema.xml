@@ -1,47 +1,47 @@
 <schema xmlns="http://optimal-systems.org/ns/dmscloud/schema/v4.0/"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://optimal-systems.org/ns/dmscloud/schema/v4.0/ dmsCloud-schema.xsd">
-    <propertyDefinition>
+    <propertyStringDefinition>
         <id>description</id>
         <propertyType>string</propertyType>
         <cardinality>single</cardinality>
         <required>true</required>
-    </propertyDefinition>
+    </propertyStringDefinition>
 
-    <propertyDefinition>
+    <propertyDecimalDefinition>
         <id>weight</id>
-        <propertyType>number</propertyType>
+        <propertyType>decimal</propertyType>
         <cardinality>single</cardinality>
         <required>true</required>
-    </propertyDefinition>
+    </propertyDecimalDefinition>
 
-    <propertyDefinition>
+    <propertyStringDefinition>
         <id>location</id>
         <propertyType>string</propertyType>
         <cardinality>single</cardinality>
         <required>true</required>
-    </propertyDefinition>
+    </propertyStringDefinition>
 
-    <propertyDefinition>
+    <propertyStringDefinition>
         <id>username</id>
         <propertyType>string</propertyType>
         <cardinality>single</cardinality>
         <required>true</required>
-    </propertyDefinition>
+    </propertyStringDefinition>
 
-    <propertyDefinition>
+    <propertyStringDefinition>
         <id>timestamp</id>
-        <propertyType>datetime</propertyType>
+        <propertyType>string</propertyType>
         <cardinality>single</cardinality>
         <required>true</required>
-    </propertyDefinition>
+    </propertyStringDefinition>
 
-    <propertyDefinition>
+    <propertyStringDefinition>
         <id>image</id>
         <propertyType>string</propertyType>
         <cardinality>single</cardinality>
         <required>true</required>
-    </propertyDefinition>
+    </propertyStringDefinition>
 
     <typeDocumentDefinition>
         <id>image</id>
@@ -49,7 +49,7 @@
         <propertyReference>description</propertyReference>
         <propertyReference>weight</propertyReference>
         <propertyReference>location</propertyReference>
-        <propertyReference>user</propertyReference>
+        <propertyReference>username</propertyReference>
         <propertyReference>timestamp</propertyReference>
         <propertyReference>image</propertyReference>
         <contentStreamAllowed>notallowed</contentStreamAllowed>
