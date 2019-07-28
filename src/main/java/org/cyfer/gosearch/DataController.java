@@ -91,7 +91,7 @@ public class DataController {
 
             //noinspection OptionalGetWithoutIsPresent
             val csvContent = Stream.concat(
-                Stream.of("description,weight,location,user,timestamp"),
+                Stream.of("description,weight,location,user,timestamp,image"),
                 searchResponse.getStoredObjects().stream().map(StoredObject::getProperties).map(DataController::createCSVRowFromProperties)
             ).reduce((formerLine, latterline) -> formerLine + '\n' + latterline).get();
 

@@ -17,6 +17,7 @@ public class ImageForm {
     String location;
     String user;
     String timestamp;
+    String image;
 
     public ImageFormDisambiguator getDisambiguator() {
         return new ImageFormDisambiguator();
@@ -59,6 +60,8 @@ public class ImageForm {
     private static final int LOCATION_COLUMN = 2;
     private static final int USER_COLUMN = 3;
     private static final int TIMESTAMP_COLUMN = 4;
+    private static final int IMAGE_COLUMN = 5;
+
 
     public static Stream<ImageForm> getImageForms(final String csvData) {
         return Arrays.stream(csvData.split("\n"))
@@ -70,7 +73,7 @@ public class ImageForm {
     }
 
     private static ImageForm fromCSVEntryColumns(String[] csvEntryColumns) {
-        if (csvEntryColumns.length != 5) {
+        if (csvEntryColumns.length != 6) {
             throw new IllegalArgumentException("`csvEntryColumns` must be length 5, received " + Arrays.toString(csvEntryColumns));
         }
 
@@ -83,7 +86,8 @@ public class ImageForm {
         val location = csvEntryColumns[LOCATION_COLUMN];
         val user = csvEntryColumns[USER_COLUMN];
         val timestamp = csvEntryColumns[TIMESTAMP_COLUMN];
+        val image = csvEntryColumns[IMAGE_COLUMN];
 
-        return new ImageForm(description, weight, location, user, timestamp);
+        return new ImageForm(description, weight, location, user, timestamp, image);
     }
 }

@@ -64,6 +64,13 @@ public class Properties {
     @JsonProperty("timestamp")
     private String timestamp;
 
+    @JsonProperty("image")
+    private String image;
+
+    public String getImage() {
+        return image;
+    }
+
     @JsonIgnore
     private Map<String, java.lang.Object> additionalProperties = new HashMap<String, java.lang.Object>();
 
