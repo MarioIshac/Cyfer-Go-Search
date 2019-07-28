@@ -164,6 +164,7 @@ public class DataController {
             val httpResponse = uploadOriginalVersion(equalImages);
             val responseJSON = httpResponse.body().string();
             val objectsResponse = getObjectMapper().readValue(responseJSON, SearchResponse.class);
+            System.out.println("Response JSON: " + responseJSON);
             val uploadedObjects = objectsResponse.getStoredObjects();
 
             if (uploadedObjects.size() != 1) {

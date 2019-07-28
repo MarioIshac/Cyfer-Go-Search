@@ -45,7 +45,7 @@ public class RecommendationController {
             Files.write(recommenderInputPath, csvBytes);
             Files.write(queryPath, String.format("%s\n%s", query, limit).getBytes());
 
-            val process = Runtime.getRuntime().exec("python3 gosearch.py");
+            val process = Runtime.getRuntime().exec("python3 ~/gosearch.py");
 
             // val graph = Paths.get("~/graph.png");
             val locations = Paths.get("~/locations.txt");
