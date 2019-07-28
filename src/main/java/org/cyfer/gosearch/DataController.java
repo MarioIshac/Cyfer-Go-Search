@@ -165,7 +165,7 @@ public class DataController {
 
         try {
             val httpResponse = uploadOriginalVersion(equalImages);
-            val responseJSON = httpResponse.body().string();
+            val responseJSON = httpResponse.body().string().replace("enaio:objectId", "objectId");
             val objectsResponse = getObjectMapper().readValue(responseJSON, SearchResponse.class);
             System.out.println("Response JSON: " + responseJSON);
             val uploadedObjects = objectsResponse.getStoredObjects();
