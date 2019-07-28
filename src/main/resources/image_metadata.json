@@ -6,22 +6,22 @@
           "value": "image"
         },
         "description": {
-          "value": "${description}"
+          "value": ${description}
         },
         "weight": {
           "value": ${weight}
         },
         "location": {
-          "value": "${location}"
+          "value": ${location}
         },
         "user": {
-          "value": "${user}"
+          "value": ${user}
         },
         "timestamp": {
-          "value": "${timestamp}"
+          "value": ${timestamp}
         },
         "image": {
-          "value": "${image}"
+          "value": ${image}
         }
       }
     }
