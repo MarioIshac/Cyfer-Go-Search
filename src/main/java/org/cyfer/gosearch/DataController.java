@@ -9,6 +9,7 @@ import org.cyfer.gosearch.searchresponse.Properties;
 import org.cyfer.gosearch.searchresponse.SearchResponse;
 import org.cyfer.gosearch.searchresponse.StoredObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -68,7 +69,7 @@ public class DataController {
     public static final MediaType XML = MediaType.parse("application/xml; charset=utf-8");
 
     @GetMapping("data/download")
-    public String downloadData() {
+    public ResponseEntity<String> downloadData() {
         val headerMap = Map.of("Ocp-Apim-Subscription-Key", "b019ec95392146ec885cc9be94e2d8f9");
         val headers = Headers.of(headerMap);
 
@@ -89,10 +90,12 @@ public class DataController {
             val searchResponse = getObjectMapper().readValue(responseJSON, SearchResponse.class);
 
             //noinspection OptionalGetWithoutIsPresent
-            return Stream.concat(
+            val csvContent = Stream.concat(
                 Stream.of("description,weight,location,user,timestamp"),
                 searchResponse.getStoredObjects().stream().map(StoredObject::getProperties).map(DataController::createCSVRowFromProperties)
             ).reduce((formerLine, latterline) -> formerLine + '\n' + latterline).get();
+
+            return ResponseEntity.ok(csvContent);
         } catch (final IOException e) {
             throw new UncheckedIOException(e);
         }
