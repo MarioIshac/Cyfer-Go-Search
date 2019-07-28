@@ -9,6 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class RecommendationController {
     @GetMapping("/recommendation")
     public void getRecommendation(final @RequestParam("hashtag") String hashtag, final @RequestParam("topLocationsCount") int topLocationsCount) {
-        PythonInterpreter
+
     }
 }
