@@ -48,7 +48,8 @@ public class DataController {
         "weight", ImageForm::getWeight,
         "location", ImageForm::getLocation,
         "user", ImageForm::getUser,
-        "timestamp", ImageForm::getTimestamp
+        "timestamp", ImageForm::getTimestamp,
+            "image", ImageForm::getImage
     );
 
     private static String toJSON(final ImageForm imageForm) {
