@@ -62,6 +62,7 @@ public class ImageForm {
 
     public static Stream<ImageForm> getImageForms(final String csvData) {
         return Arrays.stream(csvData.split("\n"))
+                     .skip(1) // Skip the headers
                      .map(csvEntry -> csvEntry.split(","))
                      .map(ImageForm::fromCSVEntryColumns);
     }
@@ -70,6 +71,7 @@ public class ImageForm {
         val description = csvEntryColumns[DESCRIPTION_COLUMN];
 
         val weightString = csvEntryColumns[WEIGHT_COLUMN];
+        System.out.println("Weight String: " + weightString);
         val weight = Double.parseDouble(weightString);
 
         val location = csvEntryColumns[LOCATION_COLUMN];
