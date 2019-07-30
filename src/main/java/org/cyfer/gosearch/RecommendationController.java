@@ -31,8 +31,8 @@ public class RecommendationController {
             val headerMap = Map.of("Ocp-Apim-Subscription-Key", "b019ec95392146ec885cc9be94e2d8f9");
             val headers = Headers.of(headerMap);
 
-            val pythonRecommenderCode = getClass().getClassLoader().getResourceAsStream("gosearch.py").readAllBytes();
-            val pythonRecommenderInstallPath = Paths.get("/gosearch.py");
+            val pythonRecommenderCode = getClass().getClassLoader().getResourceAsStream("recommender.py").readAllBytes();
+            val pythonRecommenderInstallPath = Paths.get("/recommender.py");
 
             if (!Files.exists(pythonRecommenderInstallPath)) {
                 Files.createFile(pythonRecommenderInstallPath);
@@ -55,7 +55,7 @@ public class RecommendationController {
             Files.write(recommenderInputPath, csvBytes);
             Files.write(queryPath, String.format("%s\n%s", query, limit).getBytes());
 
-            Runtime.getRuntime().exec("python3 /gosearch.py");
+            Runtime.getRuntime().exec("python3 /recommender.py");
 
             // val graph = Paths.get("~/graph.png");
             val locations = Paths.get("/locations.txt");
